@@ -29,7 +29,9 @@ def setup_logging(level: str = "INFO", file_path: Optional[str] = None):
         handlers.append(logging.FileHandler(file_path))
 
     logging.basicConfig(
-        format="%(message)s", stream=sys.stdout, level=log_level, handlers=handlers
+        format="%(message)s",
+        level=log_level,
+        handlers=handlers
     )
 
     root_logger = logging.getLogger()
