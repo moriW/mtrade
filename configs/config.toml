@@ -1,0 +1,9 @@
+env = "dev"
+
+[data]
+raw_dir = "data/raw"
+clean_dir = "data/clean"
+feature_dir = "data/feature"
+
+[log]
+level = "DEBUG"
