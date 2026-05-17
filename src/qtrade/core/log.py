@@ -28,11 +28,7 @@ def setup_logging(level: str = "INFO", file_path: Optional[str] = None):
     if file_path:
         handlers.append(logging.FileHandler(file_path))
 
-    logging.basicConfig(
-        format="%(message)s",
-        level=log_level,
-        handlers=handlers
-    )
+    logging.basicConfig(format="%(message)s", level=log_level, handlers=handlers)
 
     root_logger = logging.getLogger()
     root_logger.handlers.clear()

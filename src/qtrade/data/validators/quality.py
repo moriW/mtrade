@@ -19,12 +19,12 @@ class QualityValidator:
             "total_rows": len(self.df),
             "missing_rates": self._check_missing(),
             "duplicates": self._check_duplicates(),
-            "anomalies": {}
+            "anomalies": {},
         }
-        
+
         if self.table_name == "daily_bar":
             report["anomalies"]["price_anomaly"] = self._check_price_anomaly()
-            
+
         logger.info("Quality report generated", table=self.table_name, report=report)
         return report
 
@@ -46,9 +46,9 @@ class QualityValidator:
     def _check_price_anomaly(self) -> int:
         if all(c in self.df.columns for c in ["open", "high", "low", "close"]):
             mask = (
-                (self.df["low"] > self.df["high"]) |
-                (self.df["open"] < 0) |
-                (self.df["close"] < 0)
+                (self.df["low"] > self.df["high"])
+                | (self.df["open"] < 0)
+                | (self.df["close"] < 0)
             )
             return int(mask.sum())
         return 0
